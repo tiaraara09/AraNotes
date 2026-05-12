@@ -1,0 +1,191 @@
+body {
+    background-color: #f4dec0;
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body{
+    overflow-x: hidden;
+}
+
+.oren {
+    background-color: #ef7131;
+}
+
+.biru{
+    background-color: #80c4e9;
+}
+
+.kuning {
+   background-color: #edb51a;
+}
+
+.navbar{
+    top: 0;
+    background-color: #ef7131 ;
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+   }
+
+.navbar ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin-left: auto;
+}
+.navbar li {
+    margin: 10px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.navbar h1{
+    margin-left: 10px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.navbar a:hover{
+    color: #edb51a !important;
+    
+}
+
+.hero {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.about img{
+    margin-left: 100px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about1 img{
+    margin-left: 100px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.abtkiri{
+     margin-bottom: 75px
+}
+
+.abtkanan{
+    margin-bottom: 75px
+}
+
+.lkti img{
+    margin-left: 100px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.novel img{
+    margin-left: 100px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fls2n img{
+        margin-left: 100px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.bulan img{
+    margin-left: 100px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.intro, .bio{
+    margin: 20px;
+    padding: 5px;
+    background-color: #80c4e9;
+    border-radius: 30px;
+}
+.watakinner{
+    margin: 20px;
+    padding: 25px;
+    background-color: #edb51a;
+    border-radius: 30px;
+}
+
+.sc2d1{
+  display: flex;
+  padding-right: 150px;
+  border-radius: 10px;  
+  padding-bottom: 0px;
+  margin: 10px;
+  background-color: #edb51a;
+}
+
+.sc2d2{
+  display: flex;
+  padding-right: 150px;
+  border-radius: 10px;  
+  padding-top: 0px;
+  margin: 10px;
+  background-color: #ef7131;
+}
+
+.exp{
+  display: flex;
+  padding-right: 150px;
+  border-radius: 10px;  
+  padding-top: 0px;
+  margin: 10px;
+  background-color: #edb51a;
+}
+
+.achv{
+  display: flex;
+  padding-right: 150px;
+  border-radius: 10px;  
+  padding-top: 0px;
+  margin: 10px;
+  background-color: #80c4e9;
+}
+/* Atur tampilan dasar menu */
+.custom-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.custom-nav ul li a {
+    text-decoration: none;
+    color: antiquewhite;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Efek hover */
+.custom-nav ul li a:hover {
+    background-color: #ef7131;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
