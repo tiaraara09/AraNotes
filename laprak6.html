@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AraNotes | Laporan Praktikum Laravel (Migration, Seeding, Routing, Model, Controller)</title>
+    <style>
+        /* Tema warna konsisten (oranye, biru, kuning, krem) */
+        body {
+            background-color: #fef8e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .card-laporan {
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .card-laporan:hover {
+            transform: translateY(-5px);
+        }
+        .badge-tools {
+            background-color: #ef7131;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f0e6d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #ef7131;
+            font-weight: 500;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 25px;
+            margin: 20px 0;
+            border: 2px solid #f4dec0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-primary-custom {
+            background-color: #ef7131;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        footer {
+            background-color: #ef7131;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+        .hero-title {
+            border-radius: 60px;
+            background-color: #80c4e9;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero-title h1 {
+            font-size: 2.5rem;
+            color: #2c3e2f;
+            margin: 0;
+        }
+        .hero-title p {
+            color: #1f4f2b;
+        }
+        h2 {
+            color: #ef7131;
+            border-left: 8px solid #ef7131;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        h4 {
+            color: #edb51a;
+            margin-top: 25px;
+        }
+        .btn-back {
+            background-color: #ef7131;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-back:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            flex: 1 1 300px;
+            background: #f9f5e8;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        .gallery-caption {
+            font-weight: bold;
+            color: #ef7131;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar kembali ke portofolio -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <a href="portofolio.html" class="btn-back">
+                ← Kembali ke Portofolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero section laporan -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero-title">
+                <h1>📘 Laporan Praktikum Laravel</h1>
+                <h3>Migration, Seeding, Routing, Model, Controller</h3>
+                <p class="mt-3">Tiara Azizah | Informatika 24</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Konten utama -->
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
+            <!-- Pendahuluan -->
+            <div class="card-laporan">
+                <h2>📖 Pendahuluan</h2>
+                <p>Laravel merupakan framework PHP yang menggunakan arsitektur MVC (Model-View-Controller). Dalam praktikum ini, dilakukan implementasi komponen penting seperti <strong>Migration</strong> (membuat dan mengelola struktur tabel database), <strong>Seeding</strong> (pengisian data awal), <strong>Routing</strong> (menentukan URL dan respons), <strong>Model</strong> (Eloquent ORM untuk interaksi database), serta <strong>Controller</strong> (logika aplikasi). Praktikum ini menggunakan studi kasus tabel <code>products</code> (produk) untuk memahami alur kerja Laravel secara menyeluruh.</p>
+            </div>
+
+            <!-- Tujuan -->
+            <div class="card-laporan">
+                <h2>🎯 Tujuan Praktikum</h2>
+                <ol>
+                    <li>Membuat migration untuk tabel <code>products</code> beserta field yang sesuai.</li>
+                    <li>Menjalankan migration untuk menghasilkan tabel di database.</li>
+                    <li>Membuat seeder untuk mengisi data awal (dummy) ke dalam tabel products.</li>
+                    <li>Memahami dan mengimplementasikan routing dasar serta routing parameter.</li>
+                    <li>Membuat model Product yang terhubung dengan tabel menggunakan Eloquent.</li>
+                    <li>Membuat controller ProductController untuk menangani logika dan menghubungkan dengan route.</li>
+                </ol>
+            </div>
+
+            <!-- Tools -->
+            <div class="card-laporan">
+                <h2>🛠️ Lingkungan Pengembangan (Tools)</h2>
+                <div>
+                    <span class="badge-tools">XAMPP (Apache & MySQL)</span>
+                    <span class="badge-tools">PHP 8.x</span>
+                    <span class="badge-tools">Laravel 11</span>
+                    <span class="badge-tools">Composer</span>
+                    <span class="badge-tools">Visual Studio Code</span>
+                    <span class="badge-tools">Git Bash / CMD</span>
+                </div>
+            </div>
+
+            <!-- 1. Persiapan Database -->
+            <div class="card-laporan">
+                <h2>📌 1. Persiapan Database</h2>
+                <p>Sebelum membuat migration, terlebih dahulu dibuat database di phpMyAdmin. Database yang digunakan bernama <strong>pratikum_laravel</strong> (sesuai gambar). Berikut tampilan daftar database:</p>
+                <img src="prk6/buat%20db.png" alt="Membuat database pratikum_laravel">
+                <p><em>Gambar 1: Database pratikum_laravel telah dibuat di phpMyAdmin.</em></p>
+                <p>Kemudian konfigurasi koneksi database di file <code>.env</code> disesuaikan dengan nama database, username, dan password.</p>
+            </div>
+
+            <!-- 2. Migration -->
+            <div class="card-laporan">
+                <h2>📌 2. Migration – Membuat Tabel Products</h2>
+                <p>Migration digunakan untuk membuat dan mengelola struktur tabel database. Perintah berikut membuat file migration <code>create_product_table</code>:</p>
+                <pre><code>php artisan make:migration create_product_table</code></pre>
+                <img src="prk6/migrasi.png" alt="Perintah membuat migration product">
+                <p><em>Gambar 2: Membuat migration create_product_table (file berhasil dibuat).</em></p>
+                <p>Setelah file migration dibuat, buka file tersebut dan isi method <code>up()</code> dengan skema tabel <code>products</code>:</p>
+                <pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('price');
+            $table->text('description');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
+    }
+};</code></pre>
+                <p>Selanjutnya jalankan migration dengan perintah:</p>
+                <pre><code>php artisan migrate</code></pre>
+                <img src="prk6/artisan%20migrasi.png" alt="Hasil menjalankan php artisan migrate">
+                <p><em>Gambar 3: Proses migrasi berhasil, tabel products dan tabel lain (users, jobs) terbuat.</em></p>
+                <p>Jika ada perubahan struktur, dapat menggunakan <code>php artisan migrate:rollback</code> untuk membatalkan migrasi terakhir, atau <code>php artisan migrate:fresh</code> untuk menjalankan ulang seluruh migrasi.</p>
+            </div>
+
+            <!-- 3. Seeding -->
+            <div class="card-laporan">
+                <h2>📌 3. Seeding – Mengisi Data Awal Products</h2>
+                <p>Seeder berguna untuk mengisi data dummy ke database. Buat seeder ProductSeeder:</p>
+                <pre><code>php artisan make:seeder ProductSeeder</code></pre>
+                <p>Kemudian edit file <code>database/seeders/ProductSeeder.php</code>:</p>
+                <pre><code>&lt;?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductSeeder extends Seeder
+{
+    public function run(): void
+    {
+        DB::table('products')->insert([
+            [
+                'name' => 'Laptop',
+                'price' => 7000000,
+                'description' => 'Laptop untuk pemrograman',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Mouse',
+                'price' => 150000,
+                'description' => 'Mouse wireless',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ]);
+    }
+}</code></pre>
+                <p>Tambahkan pemanggilan seeder di <code>DatabaseSeeder.php</code>:</p>
+                <pre><code>$this->call(ProductSeeder::class);</code></pre>
+                <p>Jalankan seeder dengan perintah:</p>
+                <pre><code>php artisan db:seed</code></pre>
+                <p>Atau jika ingin migrasi ulang sekaligus seeding:</p>
+                <pre><code>php artisan migrate:fresh --seed</code></pre>
+                <p><em>Gambar 4: (Tidak ada gambar spesifik untuk seeder, namun data berhasil masuk ke tabel products).</em></p>
+                <p>Catatan: Gambar <code>seading db.png</code> yang disediakan berisi tabel risiko, tidak relevan dengan produk, sehingga tidak disertakan.</p>
+            </div>
+
+            <!-- 4. Routing Dasar dan Parameter -->
+            <div class="card-laporan">
+                <h2>📌 4. Routing – Menentukan URL dan Respon</h2>
+                <p>Routing dikelola di file <code>routes/web.php</code>. Praktikum ini mencoba dua jenis routing: dasar dan parameter.</p>
+                
+                <h4>a. Routing Dasar</h4>
+                <p>Mengubah route <code>/</code> menjadi:</p>
+                <pre><code>Route::get('/', function () {
+    return 'Selamat Datang di Laravel';
+});</code></pre>
+                <img src="prk6/ganti%20route.png" alt="Mengubah route dasar di web.php">
+                <p><em>Gambar 5: File routes/web.php dengan route dasar.</em></p>
+                <p>Hasil saat mengakses <code>http://127.0.0.1:8000</code>:</p>
+                <img src="prk6/hsl%20route.png" alt="Tampilan Selamat Datang di Laravel">
+                <p><em>Gambar 6: Browser menampilkan "Selamat Datang di Laravel".</em></p>
+
+                <h4>b. Routing Parameter (Produk ID)</h4>
+                <p>Menambahkan route dengan parameter <code>{id}</code>:</p>
+                <pre><code>Route::get('/produk/{id}', function ($id) {
+    return 'Produk ID: '. $id;
+});</code></pre>
+                <img src="prk6/route%20id.png" alt="Routing parameter produk id">
+                <p><em>Gambar 7: Route /produk/{id} yang menampilkan ID produk.</em></p>
+                <p>Contoh akses: <code>http://127.0.0.1:8000/produk/1</code> akan menampilkan "Produk ID: 1".</p>
+                <p><strong>Ini adalah gambar prdk id yang diminta.</strong></p>
+            </div>
+
+            <!-- 5. Model -->
+            <div class="card-laporan">
+                <h2>📌 5. Model – Interaksi dengan Database</h2>
+                <p>Model menggunakan Eloquent ORM untuk mempermudah manipulasi data. Buat model Product:</p>
+                <pre><code>php artisan make:model Product</code></pre>
+                <img src="prk6/model.png" alt="Membuat model Product">
+                <p><em>Gambar 8: Model Product berhasil dibuat di app/Models/Product.php.</em></p>
+                <p>Secara default model akan terhubung ke tabel <code>products</code> (plural). Untuk keperluan CRUD, kita bisa menambahkan properti <code>$fillable</code> atau <code>$guarded</code>.</p>
+                <pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    use HasFactory;
+    protected $fillable = ['name', 'price', 'description'];
+}</code></pre>
+            </div>
+
+            <!-- 6. Controller -->
+            <div class="card-laporan">
+                <h2>📌 6. Controller – Logika Aplikasi</h2>
+                <p>Controller menghubungkan Model dan View. Buat controller ProductController:</p>
+                <pre><code>php artisan make:controller ProductController</code></pre>
+                <img src="prk6/controller.png" alt="Membuat ProductController">
+                <p><em>Gambar 9: Controller ProductController berhasil dibuat.</em></p>
+                <p>Kemudian tambahkan method <code>index()</code> untuk menampilkan data produk:</p>
+                <pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        $products = Product::all();
+        return view('products', compact('products'));
+    }
+}</code></pre>
+                <p>Hubungkan route ke controller di <code>routes/web.php</code>:</p>
+                <pre><code>use App\Http\Controllers\ProductController;
+
+Route::get('/products', [ProductController::class, 'index']);</code></pre>
+                <p>Untuk membuat controller sekaligus resource lengkap (CRUD), dapat menggunakan perintah:</p>
+                <pre><code>php artisan make:controller ProductController --resource</code></pre>
+                <p>Resource controller menyediakan method: index, create, store, show, edit, update, destroy.</p>
+            </div>
+
+            <!-- 7. View (Blade) -->
+            <div class="card-laporan">
+                <h2>📌 7. View – Menampilkan Data dengan Blade</h2>
+                <p>Buat file view <code>resources/views/products.blade.php</code> untuk menampilkan daftar produk:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Data Produk&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Daftar Produk&lt;/h1&gt;
+    &lt;ul&gt;
+        @foreach ($products as $product)
+            &lt;li&gt;{{ $product->name }} - Rp {{ number_format($product->price, 0, ',', '.') }}&lt;/li&gt;
+        @endforeach
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>Setelah itu akses <code>http://127.0.0.1:8000/products</code> untuk melihat hasil dari model dan controller yang telah dibuat.</p>
+            </div>
+
+            <!-- Rangkuman Perintah Artisan -->
+            <div class="card-laporan">
+                <h2>📋 Rangkuman Perintah Artisan yang Digunakan</h2>
+                <table>
+                    <thead><tr><th>Kategori</th><th>Perintah</th></tr></thead>
+                    <tbody>
+                        <tr><td>Migration</td><td><code>php artisan make:migration create_product_table</code><br><code>php artisan migrate</code></td></tr>
+                        <tr><td>Seeder</td><td><code>php artisan make:seeder ProductSeeder</code><br><code>php artisan db:seed</code></td></tr>
+                        <tr><td>Model</td><td><code>php artisan make:model Product</code></td></tr>
+                        <tr><td>Controller</td><td><code>php artisan make:controller ProductController</code><br><code>php artisan make:controller ProductController --resource</code></td></tr>
+                        <tr><td>Route</td><td><code>php artisan route:list</code></td></tr>
+                        <tr><td>Server</td><td><code>php artisan serve</code></td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Tips:</strong> Gunakan shortcut <code>php artisan make:model Product -mcs</code> untuk membuat Model, Migration, Controller, dan Seeder sekaligus.</p>
+            </div>
+
+            <!-- Kesimpulan -->
+            <div class="card-laporan">
+                <h2>✅ Kesimpulan</h2>
+                <p>Praktikum ini berhasil mengimplementasikan komponen penting dalam Laravel: <strong>Migration</strong> untuk membuat tabel <code>products</code>, <strong>Seeder</strong> untuk mengisi data awal, <strong>Routing</strong> (dasar dan parameter), <strong>Model</strong> untuk berinteraksi dengan database, serta <strong>Controller</strong> yang menghubungkan model dan view. Semua perintah Artisan dijalankan dengan lancar dan menghasilkan tampilan sesuai harapan. Pemahaman tentang alur MVC dan fitur-fitur Laravel ini menjadi fondasi untuk pengembangan aplikasi web yang lebih kompleks seperti CRUD data mahasiswa atau produk.</p>
+                <p>Seluruh kode dan file proyek telah diunggah ke repository GitHub masing-masing sesuai ketentuan tugas.</p>
+            </div>
+
+            <!-- Tautan Repository -->
+            <div class="card-laporan text-center">
+                <h2>🔗 Tautan Repositori GitHub</h2>
+                <a href="https://github.com/tiaraara09/Laravel-Tiara/tree/master/pratikum6" target="_blank" class="btn-primary-custom">
+                    Kunjungi Repo →</a>
+            </div>
+
+            <!-- Galeri Gambar Pendukung -->
+            <div class="card-laporan">
+                <h2>📸 Galeri Dokumentasi Praktikum</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="prk6/migrasi.png" alt="migrasi">
+                        <div class="gallery-caption">Gambar 1: Membuat migration</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/buat%20db.png" alt="buat db">
+                        <div class="gallery-caption">Gambar 2: Database pratikum_laravel</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/artisan%20migrasi.png" alt="migrate">
+                        <div class="gallery-caption">Gambar 3: php artisan migrate</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/ganti%20route.png" alt="ganti route">
+                        <div class="gallery-caption">Gambar 4: Route dasar</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/hsl%20route.png" alt="hasil route">
+                        <div class="gallery-caption">Gambar 5: Output Selamat Datang</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/route%20id.png" alt="route parameter id">
+                        <div class="gallery-caption">Gambar 6: Route parameter produk id</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/model.png" alt="model">
+                        <div class="gallery-caption">Gambar 7: Membuat model Product</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="prk6/controller.png" alt="controller">
+                        <div class="gallery-caption">Gambar 8: Membuat ProductController</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <h5>Informatika 24 - Praktikum Pemrograman Web (Laravel)</h5>
+    <div class="row mt-3">
+        <div class="col-12 col-md-3">Tiara Azizah</div>
+        <div class="col-12 col-md-3">tiaratiara0109</div>
+        <div class="col-12 col-md-3">tiara_araazh</div>
+        <div class="col-12 col-md-3">Uishky</div>
+    </div>
+    <p class="mt-3">© 2025 - Laporan Migration, Seeding, Routing, Model, Controller Laravel</p>
+</footer>
+
+</body>
+</html>
