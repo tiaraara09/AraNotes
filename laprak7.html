@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AraNotes | Laporan Praktikum Laravel Relationship (Student, Major, Subject)</title>
+    <style>
+        /* Tema warna konsisten (oranye, biru, kuning, krem) */
+        body {
+            background-color: #fef8e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .card-laporan {
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .card-laporan:hover {
+            transform: translateY(-5px);
+        }
+        .badge-tools {
+            background-color: #ef7131;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f0e6d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #ef7131;
+            font-weight: 500;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 25px;
+            margin: 20px 0;
+            border: 2px solid #f4dec0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-primary-custom {
+            background-color: #ef7131;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        footer {
+            background-color: #ef7131;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+        .hero-title {
+            border-radius: 60px;
+            background-color: #80c4e9;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero-title h1 {
+            font-size: 2.5rem;
+            color: #2c3e2f;
+            margin: 0;
+        }
+        .hero-title p {
+            color: #1f4f2b;
+        }
+        h2 {
+            color: #ef7131;
+            border-left: 8px solid #ef7131;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        h4 {
+            color: #edb51a;
+            margin-top: 25px;
+        }
+        .btn-back {
+            background-color: #ef7131;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-back:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            flex: 1 1 300px;
+            background: #f9f5e8;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        .gallery-caption {
+            font-weight: bold;
+            color: #ef7131;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar kembali ke portofolio -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <a href="portofolio.html" class="btn-back">
+                ← Kembali ke Portofolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero section laporan -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero-title">
+                <h1>📘 Laporan Praktikum Laravel Relationship</h1>
+                <h3>Student, Major, Subject (One-to-Many & Many-to-Many)</h3>
+                <p class="mt-3">Tiara Azizah | Informatika 24</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Konten utama -->
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
+            <!-- Pendahuluan -->
+            <div class="card-laporan">
+                <h2>📖 Pendahuluan</h2>
+                <p>Laravel menyediakan fitur <strong>Eloquent Relationship</strong> untuk menghubungkan antar tabel database. Dalam praktikum ini, dibuat sistem akademik sederhana dengan tiga entitas: <strong>Student</strong>, <strong>Major</strong> (jurusan), dan <strong>Subject</strong> (mata kuliah). Relasi yang digunakan:</p>
+                <ul>
+                    <li><strong>One-to-Many</strong> (Major → Student): Satu jurusan memiliki banyak mahasiswa.</li>
+                    <li><strong>Many-to-One</strong> (Student → Major): Banyak mahasiswa memiliki satu jurusan.</li>
+                    <li><strong>Many-to-Many</strong> (Student ↔ Subject): Mahasiswa dapat mengambil banyak mata kuliah, dan mata kuliah dapat diambil banyak mahasiswa, dengan tabel pivot <code>student_subject</code>.</li>
+                </ul>
+                <p>Praktikum ini mengimplementasikan migration, seeder, model, controller, routing, dan view untuk menampilkan data beserta relasinya, serta menyelesaikan latihan query Eloquent.</p>
+            </div>
+
+            <!-- Tujuan -->
+            <div class="card-laporan">
+                <h2>🎯 Tujuan Praktikum</h2>
+                <ol>
+                    <li>Memahami konsep relationship One-to-Many dan Many-to-Many di Laravel.</li>
+                    <li>Membuat migration dengan foreign key (constraint) untuk tabel majors, students, subjects, dan pivot student_subject.</li>
+                    <li>Mengimplementasikan Eloquent relationship di model (hasMany, belongsTo, belongsToMany).</li>
+                    <li>Membuat seeder untuk mengisi data awal jurusan, mata kuliah, mahasiswa beserta relasi mata kuliah yang diambil.</li>
+                    <li>Membuat controller StudentController dengan metode CRUD (index, show, create, store, edit, update, destroy) menggunakan eager loading.</li>
+                    <li>Membuat routing resource dan views dengan Bootstrap untuk menampilkan daftar, detail, form tambah/edit mahasiswa.</li>
+                    <li>Melakukan query Eloquent sesuai latihan: menampilkan semua mahasiswa dengan jurusan & mata kuliah, jurusan dengan mahasiswa terbanyak, mata kuliah mahasiswa tertentu, total SKS per mahasiswa.</li>
+                </ol>
+            </div>
+
+            <!-- Tools -->
+            <div class="card-laporan">
+                <h2>🛠️ Lingkungan Pengembangan (Tools)</h2>
+                <div>
+                    <span class="badge-tools">XAMPP (Apache & MySQL)</span>
+                    <span class="badge-tools">PHP 8.x</span>
+                    <span class="badge-tools">Laravel 11</span>
+                    <span class="badge-tools">Composer</span>
+                    <span class="badge-tools">Visual Studio Code</span>
+                    <span class="badge-tools">Git Bash / CMD</span>
+                </div>
+            </div>
+
+            <!-- 1. Persiapan Database (tidak ada gambar, tetapi disebutkan) -->
+            <div class="card-laporan">
+                <h2>📌 1. Persiapan Database</h2>
+                <p>Database yang digunakan bernama <strong>pratikum_laravel</strong>. Konfigurasi di file <code>.env</code> disesuaikan. (Tidak ada gambar untuk langkah ini, namun database sudah dibuat sebelumnya).</p>
+            </div>
+
+            <!-- 2. Migration – Membuat Tabel (sesuai Picture1 s.d Picture4) -->
+            <div class="card-laporan">
+                <h2>📌 2. Migration – Membuat Tabel</h2>
+                <p>Perintah membuat migration untuk tabel <code>majors</code> (Picture1), <code>students</code> (Picture2), <code>subjects</code> (Picture3). Migration untuk <code>student_subject</code> juga dibuat meskipun tidak ada gambar terpisah, karena muncul di hasil migrate (Picture4).</p>
+                
+                <h4>Picture1: Membuat migration majors</h4>
+                <img src="prk7/Picture1.png" alt="Picture1 - membuat migration majors">
+                <p><em>Gambar 1: Perintah <code>php artisan make:registration create_major_table</code> (typo pada gambar, seharusnya <code>make:migration</code>). File migration <code>2026_05_20_070629_create_majors_table.php</code> berhasil dibuat.</em></p>
+
+                <h4>Picture2: Membuat migration students</h4>
+                <img src="prk7/Picture2.png" alt="Picture2 - membuat migration student">
+                <p><em>Gambar 2: Perintah <code>php artisan make: migration create_student_table</code> (ada spasi setelah colon). Migration <code>2026_05_20_071118_create_student_table.php</code> dibuat.</em></p>
+
+                <h4>Picture3: Membuat migration subjects</h4>
+                <img src="prk7/Picture3.png" alt="Picture3 - membuat migration subjects">
+                <p><em>Gambar 3: Perintah <code>php artisan make:migration create_subjects_table</code> berhasil.</em></p>
+
+                <p>Isi masing-masing migration sesuai modul (foreign key di students, field name dan sks di subjects). Migration untuk tabel pivot <code>student_subject</code> juga dibuat (tidak ada gambar, namun terlihat di hasil migrate).</p>
+
+                <h4>Picture4: Menjalankan migrate</h4>
+                <img src="prk7/Picture4.png" alt="Picture4 - php artisan migrate">
+                <p><em>Gambar 4: Perintah <code>php artisan migrate</code> menjalankan semua migration, termasuk <code>create_student_subject_table</code>. Semua tabel berhasil dibuat.</em></p>
+            </div>
+
+            <!-- 3. Model (Picture5, Picture6, Picture7) -->
+            <div class="card-laporan">
+                <h2>📌 3. Model dengan Eloquent Relationship</h2>
+                <p>Membuat model untuk Major, Student, dan Subject.</p>
+                <h4>Picture5: Model Major</h4>
+                <img src="prk7/Picture5.png" alt="Picture5 - membuat model Major">
+                <p><em>Gambar 5: <code>php artisan make:model Major</code> berhasil.</em></p>
+                <h4>Picture6: Model Student</h4>
+                <img src="prk7/Picture6.png" alt="Picture6 - membuat model Student">
+                <p><em>Gambar 6: <code>php artisan make:model Student</code> berhasil.</em></p>
+                <h4>Picture7: Model Subject</h4>
+                <img src="prk7/Picture7.png" alt="Picture7 - membuat model Subject">
+                <p><em>Gambar 7: <code>php artisan make:model Subject</code> berhasil.</em></p>
+                <p>Kemudian ditambahkan relasi sesuai modul:</p>
+                <pre><code>// Major: hasMany(Student::class)
+// Student: belongsTo(Major::class) dan belongsToMany(Subject::class)
+// Subject: belongsToMany(Student::class)</code></pre>
+            </div>
+
+            <!-- 4. Seeder (Picture8, Picture9, Picture10, Picture11, Picture12, Picture13) -->
+            <div class="card-laporan">
+                <h2>📌 4. Seeder – Mengisi Data Awal</h2>
+                <p>Membuat seeder untuk Major, Subject, dan Student.</p>
+                <h4>Picture8: MajorSeeder</h4>
+                <img src="prk7/Picture8.png" alt="Picture8 - membuat MajorSeeder">
+                <p><em>Gambar 8: <code>php artisan make:seeder MajorSeeder</code> berhasil.</em></p>
+                <h4>Picture9: SubjectSeeder</h4>
+                <img src="prk7/Picture9.png" alt="Picture9 - membuat SubjectSeeder">
+                <p><em>Gambar 9: <code>php artisan make:seeder SubjectSeeder</code> berhasil.</em></p>
+                <h4>Picture10: StudentSeeder</h4>
+                <img src="prk7/Picture10.png" alt="Picture10 - membuat StudentSeeder">
+                <p><em>Gambar 10: <code>php artisan make:seeder StudentSeeder</code> berhasil.</em></p>
+
+                <p>Kemudian mengisi masing-masing seeder dengan data (4 jurusan, 5 mata kuliah, 5 mahasiswa + attach random subjects). Setelah itu menjalankan seeder satu per satu.</p>
+                <h4>Picture11: Menjalankan MajorSeeder</h4>
+                <img src="prk7/Picture11.png" alt="Picture11 - db:seed MajorSeeder">
+                <p><em>Gambar 11: <code>php artisan db:seed --class=MajorSeeder</code> berhasil.</em></p>
+                <h4>Picture12: Menjalankan SubjectSeeder</h4>
+                <img src="prk7/Picture12.png" alt="Picture12 - db:seed SubjectSeeder">
+                <p><em>Gambar 12: <code>php artisan db:seed --class=SubjectSeeder</code> berhasil.</em></p>
+                <h4>Picture13: Menjalankan StudentSeeder</h4>
+                <img src="prk7/Picture13.png" alt="Picture13 - db:seed StudentSeeder">
+                <p><em>Gambar 13: <code>php artisan db:seed --class=StudentSeeder</code> berhasil (data mahasiswa dan relasi many-to-many terisi).</em></p>
+            </div>
+
+            <!-- 5. Controller (Picture14) -->
+            <div class="card-laporan">
+                <h2>📌 5. Controller – StudentController</h2>
+                <p>Membuat controller untuk menangani logika CRUD student.</p>
+                <img src="prk7/Picture14.png" alt="Picture14 - membuat StudentController">
+                <p><em>Gambar 14: <code>php artisan make:controller StudentController</code> berhasil dibuat.</em></p>
+                <p>Kemudian diisi dengan method <code>index()</code>, <code>show()</code>, <code>create()</code>, <code>store()</code>, <code>edit()</code>, <code>update()</code>, <code>destroy()</code> sesuai modul, menggunakan eager loading <code>with(['major','subjects'])</code> untuk menghindari N+1 problem.</p>
+            </div>
+
+            <!-- 6. Routing dan Views (ringkasan) -->
+            <div class="card-laporan">
+                <h2>📌 6. Routing & Views</h2>
+                <p>Routing resource di <code>routes/web.php</code>:</p>
+                <pre><code>Route::resource('students', StudentController::class);</code></pre>
+                <p>Views menggunakan Blade dengan Bootstrap (layout <code>app.blade.php</code>, index, show, create, edit). Halaman index menampilkan daftar mahasiswa dengan jurusan, mata kuliah, dan total SKS. Halaman show menampilkan detail lengkap beserta daftar mata kuliah yang diambil.</p>
+                <p>Contoh tampilan index (tidak ada gambar spesifik, namun sesuai modul).</p>
+            </div>
+
+            <!-- 7. Latihan Query -->
+            <div class="card-laporan">
+                <h2>📌 7. Latihan Query dengan Relationship</h2>
+                <h4>1. Semua mahasiswa beserta jurusan dan mata kuliahnya</h4>
+                <pre><code>$students = Student::with(['major','subjects'])->get();</code></pre>
+                <h4>2. Jurusan yang memiliki mahasiswa terbanyak</h4>
+                <pre><code>$major = Major::withCount('students')->orderBy('students_count','desc')->first();</code></pre>
+                <h4>3. Mata kuliah yang diambil oleh mahasiswa tertentu (misal id=1)</h4>
+                <pre><code>$student = Student::with('subjects')->find(1); $student->subjects;</code></pre>
+                <h4>4. Total SKS yang diambil setiap mahasiswa</h4>
+                <pre><code>$students = Student::with('subjects')->get(); foreach($students as $s) { echo $s->subjects->sum('sks'); }</code></pre>
+                <p>Hasil query tersebut dapat diverifikasi melalui Tinker atau halaman index (kolom Total SKS).</p>
+            </div>
+
+            <!-- Rangkuman Perintah -->
+            <div class="card-laporan">
+                <h2>📋 Rangkuman Perintah Artisan yang Digunakan</h2>
+                <table>
+                    <thead><tr><th>Kategori</th><th>Perintah (sesuai gambar)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Migration</td><td><code>php artisan make:registration create_major_table</code><br><code>php artisan make: migration create_student_table</code><br><code>php artisan make:migration create_subjects_table</code><br><code>php artisan migrate</code></td></tr>
+                        <tr><td>Model</td><td><code>php artisan make:model Major</code><br><code>php artisan make:model Student</code><br><code>php artisan make:model Subject</code></td></tr>
+                        <tr><td>Seeder</td><td><code>php artisan make:seeder MajorSeeder</code><br><code>php artisan make:seeder SubjectSeeder</code><br><code>php artisan make:seeder StudentSeeder</code><br><code>php artisan db:seed --class=...Seeder</code></td></tr>
+                        <tr><td>Controller</td><td><code>php artisan make:controller StudentController</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Kesimpulan -->
+            <div class="card-laporan">
+                <h2>✅ Kesimpulan</h2>
+                <p>Praktikum ini berhasil mengimplementasikan relasi One-to-Many (Major ↔ Student) dan Many-to-Many (Student ↔ Subject) di Laravel menggunakan Eloquent ORM. Seluruh tahapan mulai dari migration, seeder, model, controller resource, routing, hingga views dengan Bootstrap dapat berjalan dengan baik. Eager loading digunakan untuk menghindari N+1 problem saat menampilkan data relasi. Latihan query juga diselesaikan dengan memanfaatkan method <code>with()</code>, <code>withCount()</code>, <code>sum()</code>, dan <code>pluck()</code>. Pemahaman tentang relationship ini sangat penting untuk pengembangan aplikasi web berbasis database yang kompleks seperti sistem akademik.</p>
+                <p>Seluruh kode proyek telah diunggah ke repository GitHub.</p>
+            </div>
+
+            <!-- Tautan Repository -->
+            <div class="card-laporan text-center">
+                <h2>🔗 Tautan Repositori GitHub</h2>
+                <a href="https://github.com/tiaraara09/Laravel-Tiara/tree/master/pratikum6" target="_blank" class="btn-primary-custom">
+                    Kunjungi Repo →</a>
+            </div>
+
+            <!-- Galeri Gambar (Picture1 s.d Picture14) sesuai urutan -->
+            <div class="card-laporan">
+                <h2>📸 Galeri Dokumentasi Praktikum (prk7)</h2>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="prk7/Picture1.png" alt="Picture1"><div class="gallery-caption">Picture1: Migration majors</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture2.png" alt="Picture2"><div class="gallery-caption">Picture2: Migration students</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture3.png" alt="Picture3"><div class="gallery-caption">Picture3: Migration subjects</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture4.png" alt="Picture4"><div class="gallery-caption">Picture4: php artisan migrate</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture5.png" alt="Picture5"><div class="gallery-caption">Picture5: Model Major</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture6.png" alt="Picture6"><div class="gallery-caption">Picture6: Model Student</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture7.png" alt="Picture7"><div class="gallery-caption">Picture7: Model Subject</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture8.png" alt="Picture8"><div class="gallery-caption">Picture8: Seeder Major</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture9.png" alt="Picture9"><div class="gallery-caption">Picture9: Seeder Subject</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture10.png" alt="Picture10"><div class="gallery-caption">Picture10: Seeder Student</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture11.png" alt="Picture11"><div class="gallery-caption">Picture11: db:seed MajorSeeder</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture12.png" alt="Picture12"><div class="gallery-caption">Picture12: db:seed SubjectSeeder</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture13.png" alt="Picture13"><div class="gallery-caption">Picture13: db:seed StudentSeeder</div></div>
+                    <div class="gallery-item"><img src="prk7/Picture14.png" alt="Picture14"><div class="gallery-caption">Picture14: Controller Student</div></div>
+                </div>
+                <p><em>Catatan: Seluruh gambar diambil langsung dari hasil praktikum di terminal CMD.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <h5>Informatika 24 - Praktikum Pemrograman Web (Laravel Relationship)</h5>
+    <div class="row mt-3">
+        <div class="col-12 col-md-3">Tiara Azizah</div>
+        <div class="col-12 col-md-3">tiaratiara0109</div>
+        <div class="col-12 col-md-3">tiara_araazh</div>
+        <div class="col-12 col-md-3">Uishky</div>
+    </div>
+    <p class="mt-3">© 2025 - Laporan Praktikum Laravel (Migration, Seeder, Model, Controller, Relationship)</p>
+</footer>
+
+</body>
+</html>
