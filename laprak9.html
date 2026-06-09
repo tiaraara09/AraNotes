@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AraNotes | Laporan Praktikum Laravel UI, Bootstrap, dan Templating</title>
+    <style>
+        /* Tema warna konsisten (oranye, biru, kuning, krem) */
+        body {
+            background-color: #fef8e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .card-laporan {
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .card-laporan:hover {
+            transform: translateY(-5px);
+        }
+        .badge-tools {
+            background-color: #ef7131;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f0e6d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #ef7131;
+            font-weight: 500;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 25px;
+            margin: 20px 0;
+            border: 2px solid #f4dec0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-primary-custom {
+            background-color: #ef7131;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        footer {
+            background-color: #ef7131;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+        .hero-title {
+            border-radius: 60px;
+            background-color: #80c4e9;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero-title h1 {
+            font-size: 2.5rem;
+            color: #2c3e2f;
+            margin: 0;
+        }
+        .hero-title p {
+            color: #1f4f2b;
+        }
+        h2 {
+            color: #ef7131;
+            border-left: 8px solid #ef7131;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        h4 {
+            color: #edb51a;
+            margin-top: 25px;
+        }
+        .btn-back {
+            background-color: #ef7131;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-back:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            flex: 1 1 300px;
+            background: #f9f5e8;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        .gallery-caption {
+            font-weight: bold;
+            color: #ef7131;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar kembali ke portofolio -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <a href="portofolio.html" class="btn-back">
+                ← Kembali ke Portofolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero section laporan -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero-title">
+                <h1>📘 Laporan Praktikum Laravel UI, Bootstrap, dan Templating</h1>
+                <h3>Authentication, Custom Table Users, CRUD Users, Template SB Admin 2</h3>
+                <p class="mt-3">Tiara Azizah | Informatika 24</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Konten utama -->
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
+            <!-- Pendahuluan -->
+            <div class="card-laporan">
+                <h2>📖 Pendahuluan</h2>
+                <p>Laravel menyediakan fitur <strong>authentication scaffolding</strong> melalui package <code>laravel/ui</code> yang memudahkan pembuatan sistem login, register, dan reset password. Pada praktikum ini, diterapkan fitur authentication Laravel dengan tampilan menggunakan <strong>Bootstrap</strong>. Selain itu, dilakukan <strong>customisasi tabel users</strong> dengan menambahkan kolom username, level, dan status. Seluruh tampilan antarmuka (UI) diubah menggunakan template <strong>SB Admin 2</strong> (berbasis Bootstrap) untuk memberikan tampilan dashboard yang lebih profesional. Terakhir, dibangun fitur <strong>Manajemen Users</strong> dengan operasi CRUD (Create, Read, Update, Delete) menggunakan Laravel Resource Controller dan Eloquent ORM.</p>
+                <p>Praktikum ini mencakup:</p>
+                <ul>
+                    <li>Instalasi Laravel dan konfigurasi database.</li>
+                    <li>Instalasi <code>laravel/ui</code> dan pembangkitan authentication (bootstrap).</li>
+                    <li>Migrasi tabel default dan custom table users (menambah field username, level, status).</li>
+                    <li>Pembuatan seeder untuk user admin.</li>
+                    <li>Penggantian tampilan login dan layout utama dengan template SB Admin 2.</li>
+                    <li>Pembuatan resource controller <code>UserController</code> untuk manajemen users (CRUD) lengkap dengan view menggunakan layout yang telah dibuat.</li>
+                </ul>
+            </div>
+
+            <!-- Tujuan -->
+            <div class="card-laporan">
+                <h2>🎯 Tujuan Praktikum</h2>
+                <ol>
+                    <li>Memahami instalasi dan penggunaan Laravel UI untuk authentication.</li>
+                    <li>Mampu melakukan migrasi database dan menambah kolom pada tabel <code>users</code>.</li>
+                    <li>Membuat seeder untuk mengisi data awal (admin).</li>
+                    <li>Mengintegrasikan template SB Admin 2 (Bootstrap) ke dalam Laravel, mengubah halaman login dan dashboard.</li>
+                    <li>Membuat layout global (main, sidebar, topbar) menggunakan Blade template engine.</li>
+                    <li>Membangun fitur CRUD users (tambah, lihat, edit, hapus) dengan validasi dan session flash message.</li>
+                </ol>
+            </div>
+
+            <!-- Tools -->
+            <div class="card-laporan">
+                <h2>🛠️ Lingkungan Pengembangan (Tools)</h2>
+                <div>
+                    <span class="badge-tools">XAMPP (Apache & MySQL)</span>
+                    <span class="badge-tools">PHP 8.x</span>
+                    <span class="badge-tools">Laravel 13 (versi terbaru)</span>
+                    <span class="badge-tools">Composer</span>
+                    <span class="badge-tools">npm & Vite</span>
+                    <span class="badge-tools">Visual Studio Code</span>
+                    <span class="badge-tools">Git Bash / CMD</span>
+                </div>
+            </div>
+
+            <!-- 1. Membuat Project Laravel -->
+            <div class="card-laporan">
+                <h2>📌 1. Membuat Project Laravel</h2>
+                <p>Project Laravel dibuat dengan nama <strong>laravel-sisfo</strong> menggunakan Composer (Laravel versi 13). Perintah yang dijalankan:</p>
+                <pre><code>composer create-project laravel/laravel laravel-sisfo --prefer-dist</code></pre>
+                <img src="lprk9/Picture1.png" alt="Picture1 - composer create-project">
+                <p><em>Gambar 1: Proses pembuatan project Laravel berhasil, terlihat versi Laravel v13.8.0.</em></p>
+                <p>Tampilan awal Laravel setelah server dijalankan (<code>php artisan serve</code>) dapat dilihat pada gambar berikut.</p>
+                <img src="lprk9/Picture3.png" alt="Picture3 - Tampilan awal Laravel">
+                <p><em>Gambar 2: Halaman welcome Laravel v13.13.0 (tampilan default).</em></p>
+            </div>
+
+            <!-- 2. Konfigurasi Database -->
+            <div class="card-laporan">
+                <h2>📌 2. Konfigurasi Database</h2>
+                <p>File <code>.env</code> diisi dengan konfigurasi database MySQL (XAMPP). Database yang digunakan bernama <strong>laravel_sisfo</strong>.</p>
+                <img src="lprk9/Picture4.png" alt="Picture4 - Konfigurasi .env">
+                <p><em>Gambar 3: Setting DB_CONNECTION=mysql, DB_HOST=127.0.0.1, DB_PORT=3306, DB_DATABASE=laravel_sisfo, DB_USERNAME=root, DB_PASSWORD kosong.</em></p>
+            </div>
+
+            <!-- 3. Install Laravel UI -->
+            <div class="card-laporan">
+                <h2>📌 3. Install Package Laravel UI</h2>
+                <p>Package <code>laravel/ui</code> digunakan untuk membangkitkan authentication scaffolding. Perintah:</p>
+                <pre><code>composer require laravel/ui</code></pre>
+                <img src="lprk9/Picture5.png" alt="Picture5 - install laravel/ui">
+                <p><em>Gambar 4: Proses instalasi laravel/ui berhasil (ditandai DONE).</em></p>
+            </div>
+
+            <!-- 4. Generate Authentication Scaffolding -->
+            <div class="card-laporan">
+                <h2>📌 4. Generate Authentication dengan Bootstrap</h2>
+                <p>Menjalankan perintah berikut untuk membuat authentication dengan tampilan Bootstrap:</p>
+                <pre><code>php artisan ui bootstrap --auth</code></pre>
+                <img src="lprk9/Picture6.png" alt="Picture6 - php artisan ui bootstrap --auth">
+                <p><em>Gambar 5: Scaffolding authentication berhasil digenerate. Perintah ini juga membuat controller, view (login, register, forgot password, dashboard) dan route auth.</em></p>
+            </div>
+
+            <!-- 5. Install dan Compile Asset (npm) -->
+            <div class="card-laporan">
+                <h2>📌 5. Install & Compile Asset dengan NPM</h2>
+                <p>Untuk mengkompilasi asset CSS dan JS (termasuk Bootstrap), dijalankan perintah:</p>
+                <pre><code>npm install && npm run dev</code></pre>
+                <img src="lprk9/Picture7.png" alt="Picture7 - npm install && npm run dev">
+                <p><em>Gambar 6: Proses installasi package npm dan kompilasi Vite berhasil. Asset siap digunakan.</em></p>
+            </div>
+
+            <!-- 6. Migrasi Database Awal -->
+            <div class="card-laporan">
+                <h2>📌 6. Menjalankan Migrasi</h2>
+                <p>Migrasi default Laravel (tabel users, password_resets, failed_jobs, dll) dijalankan dengan:</p>
+                <pre><code>php artisan migrate</code></pre>
+                <img src="lprk9/Picture8.png" alt="Picture8 - php artisan migrate">
+                <p><em>Gambar 7: Migrasi berhasil, tabel users dan lainnya terbuat di database.</em></p>
+            </div>
+
+            <!-- 7. Custom Table Users -->
+            <div class="card-laporan">
+                <h2>📌 7. Customisasi Tabel Users (Menambah Field)</h2>
+                <p>Kebutuhan aplikasi memerlukan kolom tambahan: <code>username</code>, <code>level</code>, <code>status</code>. Dibuat migration baru:</p>
+                <pre><code>php artisan make:migration costum_table_users</code></pre>
+                <img src="lprk9/Picture13.png" alt="Picture13 - membuat migration costum_table_users">
+                <p><em>Gambar 8: Migration dengan nama <code>2026_06_03_082258_costum_table_users.php</code> berhasil dibuat.</em></p>
+                <p>Isi migration (method <code>up()</code>) ditulis untuk menambah kolom ke tabel <code>users</code>:</p>
+                <pre><code>Schema::table('users', function (Blueprint $table) {
+    $table->string("username")->unique();
+    $table->string("level");
+    $table->enum("status", ["ACTIVE", "INACTIVE"]);
+});</code></pre>
+                <p>Kemudian menjalankan migrasi:</p>
+                <pre><code>php artisan migrate</code></pre>
+                <img src="lprk9/Picture14.png" alt="Picture14 - migrate costum_table_users">
+                <p><em>Gambar 9: Migrasi berhasil, kolom username, level, status ditambahkan ke tabel users.</em></p>
+            </div>
+
+            <!-- 8. Seeder Admin -->
+            <div class="card-laporan">
+                <h2>📌 8. Membuat Seeder untuk User Admin</h2>
+                <p>Dibuat seeder <code>AdminSeeder</code> untuk mengisi akun admin awal. Perintah:</p>
+                <pre><code>php artisan make:seeder AdminSeeder</code></pre>
+                <p>Kemudian diisi dengan kode:</p>
+                <pre><code>$admin = new \App\Models\User;
+$admin->name = "Admin Sisfo";
+$admin->username = "admin";
+$admin->email = "admin@sisfo.com";
+$admin->level = json_encode(["ADMIN"]);
+$admin->status = "ACTIVE";
+$admin->password = \Hash::make("12345678");
+$admin->save();</code></pre>
+                <p>Jalankan seeder:</p>
+                <pre><code>php artisan db:seed --class=AdminSeeder</code></pre>
+                <img src="lprk9/Picture15.png" alt="Picture15 - seeder admin">
+                <p><em>Gambar 10: User Admin berhasil ditambahkan.</em></p>
+                <p>Setelah seeder, tampilan dashboard awal (setelah login) masih menggunakan tampilan bawaan Laravel.</p>
+                <img src="lprk9/Picture12.png" alt="Picture12 - dashboard default">
+                <p><em>Gambar 11: Halaman dashboard default setelah login (tampilan masih polos).</em></p>
+            </div>
+
+            <!-- 9. Templating dengan SB Admin 2 -->
+            <div class="card-laporan">
+                <h2>📌 9. Templating / Layouting dengan SB Admin 2</h2>
+                <p>Template SB Admin 2 (Start Bootstrap) diunduh dari <a href="https://startbootstrap.com/theme/sb-admin-2" target="_blank">link</a>, diekstrak dan folder asset (css, js, vendor, img) diletakkan ke <code>public/sbadmin</code>.</p>
+                <h4>9.1 Halaman Login</h4>
+                <p>File <code>resources/views/layouts/app.blade.php</code> (default untuk login) diubah menjadi template SB Admin 2 untuk halaman login. Hasilnya tampilan login menjadi lebih modern.</p>
+                <img src="lprk9/Picture9.png" alt="Picture9 - halaman login SB Admin 2">
+                <p><em>Gambar 12: Halaman login dengan template SB Admin 2 (perhatikan gambar dari PDF, namun setelah modifikasi tampilan login sesuai dengan asset sbadmin).</em></p>
+                <h4>9.2 Layout Global (main.blade.php)</h4>
+                <p>Dibuat file <code>resources/views/layouts/main.blade.php</code> yang berisi struktur global (sidebar, topbar, content). Menggunakan <code>@include('layouts.sidebar')</code> dan <code>@include('layouts.topbar')</code> serta <code>@yield('judul')</code> dan <code>@yield('konten')</code>.</p>
+                <p>Sidebar dan topbar disesuaikan dengan menu yang ada (Dashboard, Users). Topbar menampilkan nama user yang login dan tombol logout.</p>
+                <p>Setelah layout diterapkan, halaman dashboard berubah menjadi lebih rapi.</p>
+                <img src="lprk9/Picture16.png" alt="Picture16 - dashboard setelah templating">
+                <p><em>Gambar 13: Dashboard setelah menggunakan template SB Admin 2, menampilkan card statistic (Total User, Admin, Guru, Staff) dan copyright.</em></p>
+            </div>
+
+            <!-- 10. Manajemen Users (CRUD) -->
+            <div class="card-laporan">
+                <h2>📌 10. Manajemen Users (CRUD)</h2>
+                <p>Dibuat controller resource <code>UserController</code>:</p>
+                <pre><code>php artisan make:controller UserController --resource</code></pre>
+                <p>Routing ditambahkan di <code>routes/web.php</code>:</p>
+                <pre><code>use App\Http\Controllers\UserController;
+Route::resource('users', UserController::class);</code></pre>
+                
+                <h4>10.1 Create User (Tambah)</h4>
+                <p>View <code>create.blade.php</code> dibuat dengan form input nama, email, username, password, level (multiple select). Method store menyimpan data ke tabel users dengan level di-encode JSON. Setelah berhasil, redirect ke index dengan flash message.</p>
+                <img src="lprk9/Picture17.png" alt="Picture17 - halaman index users">
+                <p><em>Gambar 14: Halaman daftar user setelah beberapa data ditambahkan (tampilan menggunakan DataTable sederhana).</em></p>
+                <img src="lprk9/Picture18.png" alt="Picture18 - alert sukses tambah user">
+                <p><em>Gambar 15: Alert "User berhasil ditambahkan" setelah menambah user baru.</em></p>
+                <img src="lprk9/Picture19.png" alt="Picture19 - list user lebih banyak">
+                <p><em>Gambar 16: Tabel user menampilkan nama, username, email, level, status, aksi (edit, hapus).</em></p>
+
+                <h4>10.2 Edit User</h4>
+                <p>Tombol edit mengarah ke route <code>users/{id}/edit</code>. Form edit sudah terisi data user, termasuk pilihan level. Method update menyimpan perubahan.</p>
+                <img src="lprk9/Picture21.png" alt="Picture21 - form edit user">
+                <p><em>Gambar 17: Form edit user dengan data yang sudah ada (misal mengubah nama lengkap).</em></p>
+
+                <h4>10.3 Delete User</h4>
+                <p>Tombol hapus menggunakan konfirmasi JavaScript (alert) dan method DELETE. Setelah dihapus, muncul pesan sukses.</p>
+                <img src="lprk9/Picture20.png" alt="Picture20 - alert hapus user">
+                <p><em>Gambar 18: Konfirmasi penghapusan user dan notifikasi "User berhasil dihapus".</em></p>
+            </div>
+
+            <!-- Rangkuman Perintah Artisan -->
+            <div class="card-laporan">
+                <h2>📋 Rangkuman Perintah Artisan yang Digunakan</h2>
+                <table>
+                    <thead><tr><th>Kategori</th><th>Perintah</th></tr></thead>
+                    <tbody>
+                        <tr><td>Membuat Project</td><td><code>composer create-project laravel/laravel laravel-sisfo --prefer-dist</code></td></tr>
+                        <tr><td>Install Laravel UI</td><td><code>composer require laravel/ui</code></td></tr>
+                        <tr><td>Auth Scaffolding</td><td><code>php artisan ui bootstrap --auth</code></td></tr>
+                        <tr><td>Asset Compile</td><td><code>npm install && npm run dev</code></td></tr>
+                        <tr><td>Migrasi</td><td><code>php artisan migrate</code></td></tr>
+                        <tr><td>Buat Migration Custom</td><td><code>php artisan make:migration costum_table_users</code></td></tr>
+                        <tr><td>Buat Seeder</td><td><code>php artisan make:seeder AdminSeeder</code></td></tr>
+                        <tr><td>Jalankan Seeder</td><td><code>php artisan db:seed --class=AdminSeeder</code></td></tr>
+                        <tr><td>Buat Controller Resource</td><td><code>php artisan make:controller UserController --resource</code></td></tr>
+                        <tr><td>Clear Cache (opsional)</td><td><code>php artisan config:clear, php artisan cache:clear</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Kesimpulan -->
+            <div class="card-laporan">
+                <h2>✅ Kesimpulan</h2>
+                <p>Praktikum ini berhasil menerapkan sistem authentication pada Laravel menggunakan package <code>laravel/ui</code> dengan tampilan Bootstrap. Customisasi tabel users (penambahan kolom username, level, status) dapat dilakukan melalui migration. Seluruh tampilan antarmuka diubah menggunakan template SB Admin 2 yang memberikan tampilan dashboard profesional. Fitur manajemen users (CRUD) lengkap dengan resource controller, validasi, dan session flash message telah berfungsi dengan baik. Dengan demikian, pemahaman tentang Laravel authentication, templating Blade, dan operasi CRUD pada database semakin mantap.</p>
+                <p>Laporan ini melampirkan bukti dokumentasi setiap langkah berupa screenshot terminal dan tampilan web.</p>
+            </div>
+
+            <!-- Tautan Repository -->
+            <div class="card-laporan text-center">
+                <h2>🔗 Tautan Repositori GitHub</h2>
+                <a href="https://github.com/tiaraara09/Laravel-Tiara/tree/master/laravel-sisfo" target="_blank" class="btn-primary-custom">
+                    Kunjungi Repo →</a>
+            </div>
+
+            <!-- Galeri Gambar (semua Picture1 s.d Picture21) -->
+            <div class="card-laporan">
+                <h2>📸 Galeri Dokumentasi Praktikum (Folder lprk9)</h2>
+                <div class="gallery">
+                    <div class="gallery-item"><img src="lprk9/Picture1.png" alt="Picture1"><div class="gallery-caption">Gambar 1: Create project</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture3.png" alt="Picture3"><div class="gallery-caption">Gambar 2: Tampilan awal</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture4.png" alt="Picture4"><div class="gallery-caption">Gambar 3: Konfigurasi .env</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture5.png" alt="Picture5"><div class="gallery-caption">Gambar 4: Install laravel/ui</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture6.png" alt="Picture6"><div class="gallery-caption">Gambar 5: php artisan ui bootstrap --auth</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture7.png" alt="Picture7"><div class="gallery-caption">Gambar 6: npm install && npm run dev</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture8.png" alt="Picture8"><div class="gallery-caption">Gambar 7: php artisan migrate</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture9.png" alt="Picture9"><div class="gallery-caption">Gambar 8: Halaman login SB Admin 2</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture10.png" alt="Picture10"><div class="gallery-caption">Gambar 9: Halaman register</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture11.png" alt="Picture11"><div class="gallery-caption">Gambar 10: Register terisi</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture12.png" alt="Picture12"><div class="gallery-caption">Gambar 11: Dashboard default</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture13.png" alt="Picture13"><div class="gallery-caption">Gambar 12: Make migration costum_table_users</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture14.png" alt="Picture14"><div class="gallery-caption">Gambar 13: Migrate success</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture15.png" alt="Picture15"><div class="gallery-caption">Gambar 14: Seeder Admin</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture16.png" alt="Picture16"><div class="gallery-caption">Gambar 15: Dashboard setelah templating</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture17.png" alt="Picture17"><div class="gallery-caption">Gambar 16: Halaman manajemen user</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture18.png" alt="Picture18"><div class="gallery-caption">Gambar 17: Alert tambah user berhasil</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture19.png" alt="Picture19"><div class="gallery-caption">Gambar 18: List user dengan data</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture20.png" alt="Picture20"><div class="gallery-caption">Gambar 19: Konfirmasi hapus user</div></div>
+                    <div class="gallery-item"><img src="lprk9/Picture21.png" alt="Picture21"><div class="gallery-caption">Gambar 20: Form edit user</div></div>
+                </div>
+                <p><em>Catatan: Seluruh gambar disimpan dalam folder <strong>lprk9</strong> sesuai permintaan.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <h5>Informatika 24 - Praktikum Pemrograman Web (Laravel UI, Bootstrap, CRUD Users)</h5>
+    <div class="row mt-3">
+        <div class="col-12 col-md-3">Tiara Azizah</div>
+        <div class="col-12 col-md-3">tiaratiara0109</div>
+        <div class="col-12 col-md-3">tiara_araazh</div>
+        <div class="col-12 col-md-3">Uishky</div>
+    </div>
+    <p class="mt-3">© 2025 - Laporan Praktikum Laravel UI Authentication & Template SB Admin 2</p>
+</footer>
+
+</body>
+</html>
