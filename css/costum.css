@@ -1,191 +1,295 @@
+/* ========== RESET & VARIABEL MODERN ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #f4dec0;
-    margin: 0px;
-    padding: 0px;
+    background-color: #EAF0EC;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    color: #2A3D30;
+    line-height: 1.5;
+    scroll-behavior: smooth;
 }
 
-html, body{
-    overflow-x: hidden;
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap');
+
+/* ========== PALET ELEGAN ========== */
+:root {
+    --bg-base: #EAF0EC;
+    --bg-card: #FFFFFF;
+    --bg-dark: #2A3D30;
+    --bg-footer: #1F2E24;
+    --border-light: #DCE4DF;
+    --gold: #C9A84C;
+    --gold-soft: #DFC886;
+    --text-primary: #1E2D24;
+    --text-secondary: #4A6550;
+    --text-muted: #7A9E84;
+    --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.05);
 }
 
-.oren {
-    background-color: #ef7131;
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
-.biru{
-    background-color: #80c4e9;
-}
+h1 { font-size: 3.5rem; font-weight: 600; }
+h2 { font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; }
+h3 { font-size: 1.5rem; font-weight: 500; }
 
-.kuning {
-   background-color: #edb51a;
-}
-
-.navbar{
-    top: 0;
-    background-color: #ef7131 ;
-    display: flex;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-   }
-
-.navbar ul{
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    margin-left: auto;
-}
-.navbar li {
-    margin: 10px;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.navbar h1{
-    margin-left: 10px;
-}
-
-.navbar a{
+a {
     text-decoration: none;
-    color: aliceblue;
+    color: inherit;
 }
 
-.navbar a:hover{
-    color: #edb51a !important;
-    
+/* ========== LAYOUT ========== */
+.container-modern {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
+section {
+    padding: 5rem 0;
+}
+
+/* ========== NAVBAR (FIXED, BLUR) ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(42, 61, 48, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    z-index: 1100;
+    transition: all 0.3s;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.navbar h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+}
+
+.navbar li a {
+    color: #EAF0EC;
+    font-weight: 450;
+    font-size: 0.95rem;
+    transition: 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.navbar li a:hover {
+    color: var(--gold);
+}
+
+/* ========== CARDS ELEGAN ========== */
+.card-modern {
+    background: var(--bg-card);
+    border-radius: 28px;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: all 0.25s ease;
+}
+
+.card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========== BUTTON ========== */
+.btn-gold {
+    background: var(--gold);
+    color: #1E2D24;
+    padding: 0.7rem 1.8rem;
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-gold:hover {
+    background: #B8923A;
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.7rem 1.8rem;
+    border-radius: 40px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: #1E2D24;
+}
+
+/* ========== HERO SECTION ========== */
 .hero {
     display: flex;
-    position: relative;
-    z-index: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 100px;
 }
 
-.about img{
-    margin-left: 100px;
-    width: 250px;
-    height: 250px;
+.hero-image {
+    flex: 1;
+    min-width: 260px;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 32px;
     object-fit: cover;
-    object-position: center;
+    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
 }
 
-.about1 img{
-    margin-left: 100px;
-    width: 50px;
-    height: 50px;
+.hero-content {
+    flex: 1;
+    background: var(--bg-card);
+    border-radius: 32px;
+    padding: 2.5rem;
+}
+
+.hero-content h1 {
+    margin-bottom: 0.75rem;
+}
+
+.hero-content h3 {
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.quote-text {
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+    font-style: normal;
+    color: var(--text-secondary);
+    margin: 1.5rem 0;
+}
+
+/* ========== GRID ========== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* ========== SLIDER (CAROUSEL) MODERN ========== */
+.carousel {
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 320px;
     object-fit: cover;
-    object-position: center;
 }
 
-.abtkiri{
-     margin-bottom: 75px
+.carousel-caption {
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    border-radius: 0 0 28px 28px;
 }
 
-.abtkanan{
-    margin-bottom: 75px
+/* ========== FORM MODERN ========== */
+.form-control, .form-select {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+    transition: 0.2s;
 }
 
-.lkti img{
-    margin-left: 100px;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    object-position: center;
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+    outline: none;
 }
 
-.novel img{
-    margin-left: 100px;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    object-position: center;
+/* ========== FOOTER ========== */
+footer {
+    background: var(--bg-footer);
+    color: #C2D9C8;
+    text-align: center;
+    padding: 2.5rem;
+    margin-top: 4rem;
+    font-size: 0.85rem;
 }
 
-.fls2n img{
-        margin-left: 100px;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.bulan img{
-    margin-left: 100px;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    object-position: center;
-}
-
-
-.intro, .bio{
-    margin: 20px;
-    padding: 5px;
-    background-color: #80c4e9;
-    border-radius: 30px;
-}
-.watakinner{
-    margin: 20px;
-    padding: 25px;
-    background-color: #edb51a;
-    border-radius: 30px;
-}
-
-.sc2d1{
-  display: flex;
-  padding-right: 150px;
-  border-radius: 10px;  
-  padding-bottom: 0px;
-  margin: 10px;
-  background-color: #edb51a;
-}
-
-.sc2d2{
-  display: flex;
-  padding-right: 150px;
-  border-radius: 10px;  
-  padding-top: 0px;
-  margin: 10px;
-  background-color: #ef7131;
-}
-
-.exp{
-  display: flex;
-  padding-right: 150px;
-  border-radius: 10px;  
-  padding-top: 0px;
-  margin: 10px;
-  background-color: #edb51a;
-}
-
-.achv{
-  display: flex;
-  padding-right: 150px;
-  border-radius: 10px;  
-  padding-top: 0px;
-  margin: 10px;
-  background-color: #80c4e9;
-}
-/* Atur tampilan dasar menu */
-.custom-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.custom-nav ul li a {
-    text-decoration: none;
-    color: antiquewhite;
-    font-size: 18px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: 0.3s ease-in-out;
-}
-
-/* Efek hover */
-.custom-nav ul li a:hover {
-    background-color: #ef7131;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .navbar ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .quote-text {
+        border-left: none;
+        border-top: 2px solid var(--gold);
+        padding-top: 1rem;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    section {
+        padding: 3rem 0;
+    }
+    .container-modern {
+        padding: 0 1.2rem;
+    }
+    .carousel-item img {
+        height: 220px;
+    }
 }
