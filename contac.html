@@ -3,174 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AraNotes</title>
+    <title>AraNotes – Contact</title>
     <link rel="stylesheet" href="css/boostrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/costum.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <h1 style="font-size: 40px; color: #f4d4ca;">About Tiara</h1>
-        <ul>
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-            <li>
-                <a href="about.html">About Me</a>
-            </li>
-            <li>
-                <a href="portofolio.html">Portofolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </nav>
+<nav class="navbar">
+    <h1>Contact</h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portofolio.html">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
 
-    
-    <div class="container mt-4">
-        <div id="alert-success" class="alert alert-success d-none">Form submitted successfully.</div>
-        <div id="alert-error" class="alert alert-danger d-none">There was an error submitting the form.</div>
-        <div id="alert-warning" class="alert alert-warning d-none">Please check the form fields again.</div>
-    </div>
-
- 
-    <div class="container py-5" style="margin-top: 120px;">
-        <div class="row g-4">
-
-            <div class="col-lg-7">
-                <h2 class="mb-4">Send Us a Message✉️</h2>
-
-                <form id="contactForm" class="needs-validation" novalidate>
-
-                    <div class="mb-3">
-                        <label class="form-label">Name *</label>
-                        <input type="text" class="form-control" required>
-                        <div class="invalid-feedback">Name is required.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Email *</label>
-                        <input type="email" class="form-control" required>
-                        <div class="invalid-feedback">Please enter a valid email.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Phone *</label>
-                        <input type="tel" class="form-control" pattern="[0-9]{10,13}" required>
-                        <div class="invalid-feedback">Enter a valid phone number (10–13 digits).</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Subject *</label>
-                        <select class="form-select" required>
-                            <option value="" selected disabled>Select Subject</option>
-                            <option>General</option>
-                            <option>Support</option>
-                            <option>Business</option>
-                        </select>
-                        <div class="invalid-feedback">Please choose a subject.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Message *</label>
-                        <textarea class="form-control" rows="5" required></textarea>
-                        <div class="invalid-feedback">Message cannot be empty.</div>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
-                        <label class="form-check-label" for="termsCheck">
-                            I agree to terms and conditions *
-                        </label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn btn-primary w-100" disabled>
-                        Submit
-                    </button>
-                </form>
-            </div>
-
-
-            <div class="col-lg-5" style="background-color: #80c4e9; border-radius: 30px; padding: 20px;">
-                <h2 class="mb-4">Contact Information☎️</h2>
-
-                <ul class="list-unstyled fs-5">
-                    <li><strong>Address:</strong> Padang, Indonesia</li>
-                    <li class="mt-3"><strong>📞Phone:</strong> +622125899491</li>
-                    <li class="mt-3"><strong>📧Email:</strong> tiaratiara0109@gmail.com</li>
-                    <li class="mt-3"><strong>📱Sosial Media:</strong></li>
-                    <ul>
-                        <li><a style="text-decoration: none; color: aliceblue;" href="https://www.instagram.com/tiara_araazh/">Instagram</a></li>
-                        <li><a style="text-decoration: none; color: aliceblue;" href="https://wa.me/622125899491">WhatsApp</a></li>
-                        <li><a style="text-decoration: none; color: aliceblue;" href="https://github.com/tiaraara09">GitHub</a></li>
-                    </ul>
-                </ul>
-
-                <div class="mt-4">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.200217775525!2d100.45750000000001!3d-0.9086999999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cd94bcb6f7b3f5%3A0x22d87b0df9c18bae!2sUniversitas%20Andalas%20(UNAND)%2C%20Padang%2C%20Sumatera%20Barat!5e0!3m2!1sen!2sid!4v1702270000000"
-                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
+<div class="container-modern" style="margin-top: 120px;">
+    <div class="grid-2">
+        <!-- Form -->
+        <div>
+            <h2><i class="fas fa-paper-plane" style="color: var(--gold);"></i> Send a Message</h2>
+            <form id="contactForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" required>
+                    <div class="invalid-feedback">Name required.</div>
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-control" required>
+                    <div class="invalid-feedback">Valid email required.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone *</label>
+                    <input type="tel" class="form-control" pattern="[0-9]{10,13}" required>
+                    <div class="invalid-feedback">10–13 digits.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject *</label>
+                    <select class="form-select" required>
+                        <option value="" selected disabled>Select subject</option>
+                        <option>General</option>
+                        <option>Support</option>
+                        <option>Business</option>
+                    </select>
+                    <div class="invalid-feedback">Choose a subject.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message *</label>
+                    <textarea class="form-control" rows="5" required></textarea>
+                    <div class="invalid-feedback">Message cannot be empty.</div>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                    <label class="form-check-label" for="termsCheck">I agree to the terms</label>
+                    <div class="invalid-feedback">You must agree.</div>
+                </div>
+                <button type="submit" id="submitBtn" class="btn-gold w-100" disabled>Send <i class="fas fa-arrow-right"></i></button>
+            </form>
+            <div id="alert-success" class="alert alert-success mt-3 d-none">Message sent successfully.</div>
+            <div id="alert-error" class="alert alert-danger mt-3 d-none">Error, please try again.</div>
+        </div>
 
+        <!-- Contact Info -->
+        <div class="card-modern">
+            <i class="fas fa-address-card" style="font-size: 2rem; color: var(--gold);"></i>
+            <h2>Contact Information</h2>
+            <p><i class="fas fa-map-marker-alt"></i> Padang, Indonesia</p>
+            <p><i class="fas fa-phone-alt"></i> +622125899491</p>
+            <p><i class="fas fa-envelope"></i> tiaratiara0109@gmail.com</p>
+            <p><i class="fas fa-share-alt"></i> Social Media:</p>
+            <ul>
+                <li><a href="https://www.instagram.com/tiara_araazh/" style="color: var(--gold);"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://wa.me/622125899491" style="color: var(--gold);"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                <li><a href="https://github.com/tiaraara09" style="color: var(--gold);"><i class="fab fa-github"></i> GitHub</a></li>
+            </ul>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.200217775525!2d100.45750000000001!3d-0.9086999999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cd94bcb6f7b3f5%3A0x22d87b0df9c18bae!2sUniversitas%20Andalas%20(UNAND)%2C%20Padang%2C%20Sumatera%20Barat!5e0!3m2!1sen!2sid!4v1702270000000" width="100%" height="200" style="border:0; border-radius: 20px;"></iframe>
         </div>
     </div>
-<!--  -->
+</div>
 
+<footer>
+    <p>© 2025 Tiara Azizah – Let’s connect</p>
+</footer>
 
-    <script src="sj/bosstrap.js"></script>
-
-    <script>
+<script src="sj/bosstrap.js"></script>
+<script>
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('input', () => {
-        submitBtn.disabled = !form.checkValidity();
-    });
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
+    form.addEventListener('input', () => { submitBtn.disabled = !form.checkValidity(); });
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
         if (form.checkValidity()) {
-
             const name = form.querySelector('input[type="text"]').value;
             const email = form.querySelector('input[type="email"]').value;
             const phone = form.querySelector('input[type="tel"]').value;
             const subject = form.querySelector('select').value;
             const message = form.querySelector('textarea').value;
-
-            // Body email yang benar
-            const body = 
-`Name: ${name}%0D%0A
-Email: ${email}%0D%0A
-Phone: ${phone}%0D%0A
-Subject: ${subject}%0D%0A%0D%0A
-Message:%0D%0A${message}`;
-
-            // Mailto yang benar
-            window.location.href = 
-                `mailto:tiaratiara0109@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0ASubject: ${subject}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            window.location.href = `mailto:tiaratiara0109@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
             document.getElementById('alert-success').classList.remove('d-none');
-            document.getElementById('alert-error').classList.add('d-none');
-            document.getElementById('alert-warning').classList.add('d-none');
-
             form.reset();
             submitBtn.disabled = true;
-
         } else {
             document.getElementById('alert-error').classList.remove('d-none');
-            document.getElementById('alert-warning').classList.remove('d-none');
-            document.getElementById('alert-success').classList.add('d-none');
         }
-
         form.classList.add('was-validated');
     });
 </script>
-
 </body>
 </html>
