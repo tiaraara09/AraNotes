@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AraNotes | Laporan Praktikum 1 - Widgets</title>
+    <style>
+        /* Tema warna konsisten (oranye, biru, kuning, krem) */
+        body {
+            background-color: #fef8e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .card-laporan {
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .card-laporan:hover {
+            transform: translateY(-5px);
+        }
+        .badge-tools {
+            background-color: #ef7131;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f0e6d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #ef7131;
+            font-weight: 500;
+        }
+        .btn-primary-custom {
+            background-color: #ef7131;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        footer {
+            background-color: #ef7131;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+        .hero-title {
+            border-radius: 60px;
+            background-color: #80c4e9;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero-title h1 {
+            font-size: 2.5rem;
+            color: #2c3e2f;
+            margin: 0;
+        }
+        .hero-title p {
+            color: #1f4f2b;
+        }
+        h2 {
+            color: #ef7131;
+            border-left: 8px solid #ef7131;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            background-color: #ef7131;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-back:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .col-md-3 {
+            width: 25%;
+        }
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <a href="portofolio.html" class="btn-back">
+                ← Kembali ke Portofolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero-title">
+                <h1>📘 Laporan Praktikum 1: Widgets</h1>
+                <h3>Pengenalan Widget dan Pengelolaan State Sederhana</h3>
+                <p class="mt-3">Tiara Azizah | Informatika 24</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
+            
+            <div class="card-laporan">
+                <h2>📖 BAB II: Pembahasan Praktikum 1</h2>
+                <p>Pada praktikum pertama, fokus utama adalah pengenalan widget dan pengelolaan state sederhana. Aplikasi yang dibangun adalah prototipe halaman dashboard dari aplikasi <strong>Expense Tracker</strong>.</p>
+            </div>
+
+            <div class="card-laporan">
+                <h2>🛠️ Lingkungan Pengembangan (Tools)</h2>
+                <div>
+                    <span class="badge-tools">Flutter SDK</span>
+                    <span class="badge-tools">Dart</span>
+                    <span class="badge-tools">VS Code</span>
+                    <span class="badge-tools">Android Emulator</span>
+                </div>
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 2.1 Implementasi Stateless Widget (GreetingWidget)</h2>
+                <p>Pembuatan bagian sapaan pengguna dilakukan menggunakan <code>StatelessWidget</code> karena tidak ada perubahan data interaktif pada komponen ini. Widget disusun menggunakan <code>Row</code> untuk menyejajarkan avatar dengan teks secara horizontal, serta <code>Column</code> di dalamnya untuk menyusun teks sapaan dan ucapan selamat datang secara vertikal.</p>
+                <img src="Apmol1/carbon (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <img src="Apmol1/carbon (2).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <img src="Apmol1/carbon (3).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <img src="Apmol1/carbon (4).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 2.2 Implementasi Stateful Widget (BalanceCardWidget)</h2>
+                <img src="Apmol1/output1.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <p>Komponen kartu saldo mengimplementasikan <code>StatefulWidget</code> karena membutuhkan interaksi untuk menampilkan atau menyembunyikan nominal saldo.</p>
+                <ul>
+                    <li><strong>Manajemen State:</strong> Menggunakan variabel boolean <code>_isBalanceVisible</code> yang diubah nilainya melalui fungsi <code>setState()</code> saat tombol eye icon ditekan.</li>
+                    <li><strong>Modifikasi Antarmuka:</strong> Tampilan kartu saldo dimodifikasi dengan menggunakan warna latar <code>Colors.teal</code>. Selain itu, ditambahkan informasi tambahan berupa teks "No. Rekenning 12345-67890" di bagian bawah informasi saldo utama.</li>
+                </ul>
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 2.3 Hasil Percobaan Praktikum 1</h2>
+                <img src="Apmol1/output2.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <p>Berdasarkan antarmuka yang dihasilkan, aplikasi berhasil merender App bar berwarna biru muda (light blue), Greeting Widget, dan Balance Card berwarna teal yang dapat di-klik untuk mengubah visibilitas teks "Rp 5.000.000" menjadi "Rp ***********".</p>
+            </div>
+
+            <div class="card-laporan">
+                <h2>✅ Kesimpulan Modul 1</h2>
+                <p>Dari praktikum ini dapat disimpulkan bahwa framework Flutter menggunakan paradigma deklaratif berbasis widget. Pemisahan kode antara <code>StatelessWidget</code> dan <code>StatefulWidget</code> sangat membantu efisiensi rendering, di mana komponen yang statis tidak perlu dimuat ulang (re-build) ketika terdapat perubahan state pada komponen dinamis layaknya fitur hide/show saldo.</p>
+            </div>
+
+            <div class="card-laporan text-center">
+                <h2>🔗 Tautan Repositori GitHub</h2>
+                <a href="https://github.com/tiaraara09/AraNotes" target="_blank" class="btn-primary-custom">
+                    Kunjungi Repo →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <h5>Informatika 24 - Praktikum Pemrograman Mobile (Widgets)</h5>
+    <div class="row mt-3" style="justify-content: center; display: flex; gap: 20px;">
+        <div>Tiara Azizah</div>
+        <div>tiaratiara0109</div>
+        <div>tiara_araazh</div>
+        <div>Uishky</div>
+    </div>
+    <p class="mt-3">© 2026 - Laporan Praktikum Flutter Widgets</p>
+</footer>
+
+</body>
+</html>

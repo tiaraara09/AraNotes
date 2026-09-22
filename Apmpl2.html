@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AraNotes | Laporan Praktikum 2 - Layouting</title>
+    <style>
+        /* Tema warna konsisten (oranye, biru, kuning, krem) */
+        body {
+            background-color: #fef8e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .card-laporan {
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #ffffff;
+            transition: transform 0.2s;
+        }
+        .card-laporan:hover {
+            transform: translateY(-5px);
+        }
+        .badge-tools {
+            background-color: #ef7131;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #f0e6d2;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #ef7131;
+            font-weight: 500;
+        }
+        .btn-primary-custom {
+            background-color: #ef7131;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        footer {
+            background-color: #ef7131;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+        .hero-title {
+            border-radius: 60px;
+            background-color: #80c4e9;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero-title h1 {
+            font-size: 2.5rem;
+            color: #2c3e2f;
+            margin: 0;
+        }
+        .hero-title p {
+            color: #1f4f2b;
+        }
+        h2 {
+            color: #ef7131;
+            border-left: 8px solid #ef7131;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            background-color: #ef7131;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .btn-back:hover {
+            background-color: #c55a24;
+            color: white;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .mt-3 {
+            margin-top: 1rem;
+        }
+        .mt-5 {
+            margin-top: 3rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <a href="portofolio.html" class="btn-back">
+                ← Kembali ke Portofolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero-title">
+                <h1>📘 Laporan Praktikum 2: Layouting</h1>
+                <h3>Penerapan Teknik Layouting Tingkat Lanjut dan Komponen Dinamis</h3>
+                <p class="mt-3">Tiara Azizah | Informatika 24</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
+            
+            <div class="card-laporan">
+                <h2>📖 BAB III: Pembahasan Praktikum 2</h2>
+                <p>Pada praktikum kedua, dilakukan penambahan elemen antarmuka baru dan penerapan teknik layouting tingkat lanjut agar aplikasi lebih kompleks dan fungsional.</p>
+            </div>
+
+            <div class="card-laporan">
+                <h2>🛠️ Lingkungan Pengembangan (Tools)</h2>
+                <div>
+                    <span class="badge-tools">Flutter SDK</span>
+                    <span class="badge-tools">Dart</span>
+                    <span class="badge-tools">VS Code</span>
+                    <span class="badge-tools">Android Emulator</span>
+                </div>
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 3.1 Penerapan SingleChildScrollView</h2>
+                <p>Keseluruhan body pada <code>DashboardScreen</code> dibungkus menggunakan <code>SingleChildScrollView</code>. Hal ini dilakukan untuk mencegah error overflow pada layar (terutama pada perangkat berlayar kecil) ketika elemen konten yang dirender, seperti daftar transaksi, melebihi tinggi layar.</p>
+                <img src="Apmol2/carbon (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <img src="Apmol2/carbon (2).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 3.2 Implementasi Layouting Tombol Aksi (ActionButtonsWidget)</h2>
+                <img src="Apmol2/carbon (3).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <p>Menu aksi ditambahkan dengan memanfaatkan widget <code>Row</code> dengan properti <code>mainAxisAlignment: MainAxisAlignment.spaceEvenly</code>. Properti ini memastikan jarak antar tombol (Pemasukan, Pengeluaran, dan Transfer) terbagi sama rata secara proporsional dari sisi kiri hingga kanan layar. Untuk efisiensi kode, pembuatan masing-masing tombol dibungkus ke dalam helper function <code>_buildActionButton</code>.</p>
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 3.3 Implementasi Daftar Transaksi (RecentTransactionsWidget)</h2>
+                <p>Untuk menampilkan riwayat transaksi, dibuat sebuah model data <strong>Transaksi</strong>. Model ini menyertakan logic getter yang secara otomatis mengubah gaya tampilan teks (Tugas 1 Praktikum):</p>
+                <ul>
+                    <li>Jika nominal >= 0, maka dikategorikan sebagai "Pemasukan", ditandai dengan ikon plus (+) dan teks nominal berwarna hijau (<code>Colors.green</code>).</li>
+                    <li>Jika nominal < 0, maka dikategorikan sebagai "Pengeluaran", ditandai dengan ikon minus (-) dan teks nominal berwarna merah (<code>Colors.red</code>).</li>
+                </ul>
+                <img src="Apmol2/carbon (4).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <img src="Apmol2/carbon (5).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            </div>
+
+            <div class="card-laporan">
+                <h2>📌 3.4 Hasil Praktikum 2</h2>
+                <p>Daftar transaksi ini di-render menggunakan widget <code>Column</code> dan perulangan (loop) yang menghasilkan komponen <code>ListTile</code> dan garis pemisah (<code>Divider</code>). Sesuai dengan instruksi Tugas 2, data riwayat transaksi ditambahkan menjadi total 4 entri data, yakni "Makan Siang", "Gaji Bulanan", "Belanja Bulanan", dan "Bonus".</p>
+                <img src="Apmol2/Output1.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            
+                <div class="card-laporan">
+                <h2>📌 3.5 Hasil Percobaan Praktikum 2</h2>
+                <img src="Apmol2/output2.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+                <p>Antarmuka berhasil diperbarui dengan tambahan deretan tombol aksi di bawah kartu saldo utama. Di bawahnya, terdapat Card berisi daftar "Transaksi Terakhir" di mana teks harga secara dinamis berubah warna menjadi merah atau hijau sesuai dengan nilai nominal pemasukan maupun pengeluaran pada backend dummy data.</p>
+            </div>
+
+            <div class="card-laporan">
+                <h2>✅ BAB IV: Kesimpulan Akhir</h2>
+                <p>Widget <code>Row</code> dan <code>Column</code> memegang peranan krusial untuk menentukan tata letak dasar secara horizontal dan vertikal. Selain itu, pemanfaatan class Model (seperti class <strong>Transaksi</strong>) terbukti mempermudah implementasi logika kondisional secara otomatis (seperti format pewarnaan nominal harga) sehingga kode UI tetap bersih dan modular.</p>
+            </div>
+
+            <div class="card-laporan text-center">
+                <h2>🔗 Tautan Repositori GitHub</h2>
+                <a href="https://github.com/tiaraara09/AraNotes" target="_blank" class="btn-primary-custom">
+                    Kunjungi Repo →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <h5>Informatika 24 - Praktikum Pemrograman Mobile (Layouting)</h5>
+    <div class="row mt-3" style="justify-content: center; display: flex; gap: 20px;">
+        <div>Tiara Azizah</div>
+        <div>tiaratiara0109</div>
+        <div>tiara_araazh</div>
+        <div>Uishky</div>
+    </div>
+    <p class="mt-3">© 2026 - Laporan Praktikum Flutter Layouting</p>
+</footer>
+
+</body>
+</html>
