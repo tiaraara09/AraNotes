@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AraNotes | Laporan Praktikum 3 - Input Widgets & Forms</title>
+    <title>AraNotes | Laporan Praktikum 4 - Navigasi & Passing Data</title>
     
     <style>
         /* ========== RESET & VARIABEL MODERN ========== */
@@ -333,8 +333,8 @@
                 ← Kembali ke Portofolio
             </a>
             <div class="hero-content">
-                <h1>📘 Laporan Praktikum 3: Input Widgets & Forms</h1>
-                <h3>Pengembangan Antarmuka Pengisian Data dan Validasi</h3>
+                <h1>📘 Laporan Praktikum 4: Navigasi & Passing Data</h1>
+                <h3>Pengembangan Pergerakan Antar Layar dan Pengiriman Data</h3>
                 <p class="quote-text">Tiara Azizah | Informatika 24 - Universitas Andalas</p>
             </div>
         </div>
@@ -345,57 +345,63 @@
         <div class="card-modern">
             <h2>📖 BAB I: Pendahuluan</h2>
             <h3>1.1 Tujuan Praktikum</h3>
-            <p>Praktikum ini memiliki beberapa tujuan utama dalam pengembangan antarmuka pengguna, yaitu:</p>
+            <p>Praktikum ini memiliki beberapa tujuan utama terkait pergerakan antar layar pada aplikasi, yaitu:</p>
             <ul class="laporan-list">
-                <li>Menangkap data teks dari pengguna menggunakan <code>controller</code>.</li>
-                <li>Menerapkan widget dropdown statis untuk pilihan kategori.</li>
-                <li>Melakukan validasi input guna mencegah pengiriman data kosong atau format yang salah.</li>
+                <li>Menerapkan <code>Navigator.push</code> untuk berpindah ke layar baru.</li>
+                <li>Menggunakan <code>Navigator.pop</code> untuk menutup layar setelah suatu aksi selesai dilakukan.</li>
+                <li>Mengirim data dengan tipe data seperti <code>String</code> dan <code>int</code> antar layar melalui Constructor.</li>
             </ul>
 
             <h3 class="mt-4">1.2 Alat dan Lingkungan Kerja</h3>
             <div style="margin-top: 10px;">
                 <span class="badge-tools">Flutter SDK</span>
                 <span class="badge-tools">VS Code / Android Studio</span>
-                <span class="badge-tools">Android Emulator / Device</span>
+                <span class="badge-tools">Emulator / Device</span>
             </div>
         </div>
 
         <!-- BAB II: DASAR TEORI -->
         <div class="card-modern">
             <h2>📖 BAB II: Dasar Teori</h2>
-            <p>Dalam membangun formulir pada Flutter, terdapat beberapa komponen utama yang menjadi pilar:</p>
+            <p>Navigasi di dalam Flutter dikelola oleh widget bernama <code>Navigator</code> yang bekerja dengan konsep Stack atau tumpukan kartu:</p>
             <ul class="laporan-list">
-                <li><strong>Form & GlobalKey:</strong> Widget <code>Form</code> berfungsi sebagai wadah utama yang mengelompokkan input, sedangkan <code>GlobalKey</code> digunakan untuk memvalidasi banyak input tersebut secara sekaligus.</li>
-                <li><strong>TextFormField:</strong> Merupakan kolom teks yang telah mendukung sistem validasi terintegrasi di dalamnya.</li>
-                <li><strong>TextController:</strong> Pengendali (<code>TextEditingController</code>) yang bertugas membaca teks yang diketikkan oleh pengguna secara real-time.</li>
-                <li><strong>Validasi:</strong> Mekanisme untuk mencegah masuknya data yang tidak sesuai format sebelum disimpan ke sistem. Fungsi validator akan mengembalikan nilai <code>null</code> jika data valid, atau nilai <code>String</code> berupa pesan error merah jika tidak valid.</li>
+                <li><strong>Push (Maju):</strong> Digunakan untuk meletakkan halaman baru di tumpukan paling atas sehingga layar akan berpindah ke halaman tersebut.</li>
+                <li><strong>Pop (Mundur):</strong> Digunakan untuk menghapus atau menutup halaman teratas untuk kembali ke halaman sebelumnya.</li>
+                <li><strong>Passing Data:</strong> Dalam melakukan pengiriman data (passing data) antar halaman, halaman penerima (misalnya Halaman B) harus menyiapkan variabel penampung bertipe <code>final</code> dan sebuah Constructor. Penggunaan kata kunci <code>required</code> di dalam Constructor menandakan bahwa data tersebut wajib diisi ketika halaman dipanggil.</li>
             </ul>
         </div>
 
-        <!-- BAB III: LANGKAH KERJA & PENYELESAIAN TUGAS -->
+        <!-- BAB III: LANGKAH KERJA & IMPLEMENTASI -->
         <div class="card-modern">
-            <h2>🛠️ BAB III: Langkah Kerja & Penyelesaian Tugas</h2>
-            <p>Pada praktikum ini, dibangun sebuah halaman "Catat Transaksi Baru". Sesuai instruksi latihan/tugas modul, aplikasi dimodifikasi untuk menambahkan input Tanggal Transaksi sebelum tombol simpan, menggunakan fungsi <code>showDatePicker</code> dan menerapkan validasi wajib diisi.</p>
+            <h2>🛠️ BAB III: Langkah Kerja & Implementasi</h2>
+            <p>Dalam praktikum ini, struktur proyek dibagi menjadi 4 file terpisah di dalam folder <code>lib</code> untuk mensimulasikan arsitektur aplikasi yang rapi.</p>
 
-            <h3 class="mt-4">📌 3.1 Struktur File <code>lib/main.dart</code></h3>
-            <p>File ini adalah titik masuk utama aplikasi yang mengatur tema dan memanggil halaman form.</p>
-            <img src="Apmol3/main.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <h3 class="mt-4">📌 3.1 <code>main.dart</code></h3>
+            <p>Berfungsi sebagai file utama untuk menjalankan aplikasi dengan konfigurasi tema warna merah (<code>Colors.red</code>) yang memuat <code>DashboardScreen</code> pertama kali.</p>
+            <img src="Apmol4/maind/maind.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
 
-            <h3 class="mt-4">📌 3.2 Struktur File <code>lib/add_transaction_screen.dart</code></h3>
-            <p>File ini berisi <code>StatefulWidget</code> yang menangani Form, Controller, Dropdown, dan fungsi pemilih tanggal (DatePicker) yang ditugaskan.</p>
-                <img src="Apmol3/add.png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
-                <img src="Apmol3/add (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
-                <img src="Apmol3/add (2).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
-                <img src="Apmol3/add (3).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
-                <p>Setelah seluruh struktur kode diselesaikan, output yang akan dihasilkan adalah sebagai berikut</p>
-                <img src="Apmol3/output.jpeg" alt="Output akhir dari kode yang telah disertakan dengan tugas" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">              
+            <h3 class="mt-4">📌 3.2 <code>dashboard_screen.dart</code></h3>
+            <p>Halaman utama (dashboard) yang menampilkan sisa saldo dan daftar transaksi. Saat item transaksi atau tombol <i>Floating Action Button</i> diklik, aplikasi menggunakan <code>Navigator.push</code> untuk berpindah halaman dan sekaligus mengirimkan data transaksi (seperti judul, jumlah, kategori, dan tanggal).</p>
+            <img src="Apmol4/dshbrd/carbon (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <img src="Apmol4/dshbrd/carbon (2).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <img src="Apmol4/dshbrd/carbon (3).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <img src="Apmol4/dshbrd/carbon (4).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            
+            <h3 class="mt-4">📌 3.3 <code>add_transaction_screen.dart</code></h3>
+            <p>Halaman form untuk mencatat transaksi baru. Di dalamnya terdapat validasi form, serta penggunaan <code>Navigator.pop</code> yang dieksekusi untuk menutup form dan kembali ke Dashboard setelah tombol Simpan diklik.</p>
+            <img src="Apmol4/adscrn/carbon (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <img src="Apmol4/adscrn/carbon (2).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            <img src="Apmol4/adscrn/carbon (3).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
+            
+            <h3 class="mt-4">📌 3.4 <code>transaction_detail_screen.dart</code></h3>
+            <p>Halaman yang bertugas menerima passing data via Constructor. Variabel penampung diatur sebagai <code>final</code> dan <code>required</code> untuk menjamin data judul, nominal, kategori, dan tanggal transaksi berhasil ditampilkan ke antarmuka pengguna.</p>
+            <img src="Apmol4/trans/carbon (1).png" alt="Struktur kode" style="width: 320px;height: 425px; object-fit: cover; object-position: left;">
         </div>
 
         <!-- BAB IV: KESIMPULAN -->
         <div class="card-modern">
             <h2>✅ BAB IV: Kesimpulan</h2>
-            <p>Melalui praktikum ini, pengembangan antarmuka pengisian data (form) pada Flutter berhasil dipahami dan diimplementasikan secara interaktif. Penggunaan widget <code>Form</code> yang dikombinasikan dengan <code>GlobalKey</code> memudahkan proses validasi seluruh input lapangan (teks, angka, kategori, dan tanggal) secara serentak.</p>
-            <p>Untuk menyelesaikan tugas tambahan berupa input tanggal, implementasi terbaik dilakukan dengan memanggil pustaka bawaan <code>showDatePicker</code>. Pendekatan ini digabungkan dengan <code>TextFormField</code> berstatus <code>readOnly: true</code> agar input lebih konsisten, aman dari salah ketik (typo), serta menjaga pengalaman pengguna (UX) tetap rapi karena keyboard bawaan tidak akan muncul saat form tanggal ditekan.</p>
+            <p>Melalui praktikum ini, navigasi pergerakan antar layar dalam pengembangan Flutter berhasil dipahami secara menyeluruh. Pendekatan <code>Navigator.push</code> dan <code>Navigator.pop</code> memberikan kontrol penuh atas alur perjalanan pengguna secara efisien. Di samping itu, pengiriman data lintas halaman menggunakan <code>Constructor</code> dengan parameter <code>required</code> terbukti sangat andal dalam merender informasi dinamis antar layar, menciptakan pengalaman sistem yang terintegrasi dan responsif.</p>
         </div>
 
         <!-- TAUTAN REPOSITORI -->
@@ -411,7 +417,7 @@
 </div>
 
 <footer>
-    <h3 style="color: var(--gold); margin-bottom: 10px;">Praktikum Pemrograman Mobile (Input Widgets & Forms)</h3>
+    <h3 style="color: var(--gold); margin-bottom: 10px;">Praktikum Pemrograman Mobile (Navigasi & Passing Data)</h3>
     <p style="color: #C2D9C8;">Informatika 24 - Universitas Andalas</p>
     
     <div class="footer-links">
